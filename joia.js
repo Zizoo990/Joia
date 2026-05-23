@@ -5,7 +5,7 @@ const products = [
   {id:"cox-3", name:"Coxinha (Hotdog & Cheese)", desc:"600gm", price:125, img:["images/Hotdog2.jpg","images/Hotdog1.jpg"]},
   {id:"kob-1", name:"Kobeba (Beef Kibbeh)", desc:"600gm", price:220, img:["images/kobeba2.jpg","images/kobeba1.jpg"]},
   {id:"Chou-1", name:"Caramel Churros", desc:"600gm", price:140, img:["images/CaramelChouros.png","images/CaramelChouros.png"]},
-  {id:"Chou-2", name:"Chocolate Churros", desc:"600gm", price:160, img:["images/ChocolateChouros.png","images/ChocolateChouros.png"]}
+  {id:"Chou-2", name:"Chocolate Churros", desc:"600gm", price:150, img:["images/ChocolateChouros.png","images/ChocolateChouros.png"]}
 ];
 
 let cart = [];
