@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joia Foods</title>
+  <link rel="stylesheet" href="joia.css">
+</head>
+<body>
+  <header>
+    <div class="header-bg">
+      <img src="images/header2.png" alt="Joia Foods">
+    </div>
+    <img src="images/logo.png" alt="Joia Foods Logo" class="logo">
+    <button id="cart-btn">🛒 Cart (<span id="cart-count">0</span>)</button>
+  </header>
+
+  <!-- Help Section -->
+  <div class="help-section">
+    <span id="help-btn">❔Need Help</span>
+
+    <div id="help-box" class="hidden">
+      <button class="help-option" data-type="cancel">❌ Cancel an Order</button>
+      <button class="help-option" data-type="contact">📞 Contact Us</button>
+      <button class="help-option" data-type="feedback">💬 Send Feedback</button>
+    </div>
+
+    <div id="help-form" class="hidden">
+      <button id="back-btn">⬅ Back</button>
+      <form id="helpForm" method="POST">
+        <div id="form-content"></div>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+
+  <main>
+    <section id="products"></section>
+  </main>
+
+  <!-- Cart Drawer -->
+  <div id="cart-drawer">
+    <button id="close-cart">X</button>
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+    <div id="cart-totals">
+      <div class="line"></div>
+
+      <div class="total-row">
+        <span>SUBTOTAL:</span>
+        <span id="subtotal-value">EGP 0.00</span>
+      </div>
+
+      <div class="total-row">
+        <span>DELIVERY:</span>
+        <span id="delivery-value">EGP 0.00</span>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="total-row total-final">
+        <span>TOTAL:</span>
+        <span id="total-value">EGP 0.00</span>
+      </div>
+    </div>
+
+    <button id="checkout-btn">Checkout</button>
+  </div>
+
+  <!-- Checkout Form -->
+  <div id="checkout-form">
+    <h2>Place Your Order</h2>
+    <form id="order-form" method="POST">
+      <label>Name:
+        <input type="text" name="name" required>
+      </label>
+      <label>Email:
+        <input type="email" name="email" required>
+      </label>
+      <label>Mobile number:
+        <input type="text" name="mobile" required>
+      </label>
+      <label>Address:
+        <textarea name="address" required></textarea>
+      </label>
+      <!-- ADDED COMMENT FIELD -->
+      <label>Comments (Optional):
+        <textarea name="comment" placeholder="Any special instructions or comments..."></textarea>
+      </label>
+      <input type="hidden" name="order" id="order-summary">
+      <button type="submit">Send Order</button>
+      <button type="button" id="cancel-order">Cancel</button>
+    </form>
+  </div>
+
+  <!-- Order Confirmation -->
+  <div id="order-confirm">
+    <h2>✅ Order Sent!</h2>
+    <p>Thanks for ordering, we'll contact you soon.</p>
+    <button id="close-confirm">Close</button>
+  </div>
+
+  <!-- Hidden iframe for form submission -->
+  <iframe name="hidden-iframe" id="hidden-iframe" style="display:none;"></iframe>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section about">
+        <h3>About Joia Foods</h3>
+        <p>Born in Egypt, inspired by flavors from around the world. Joia Foods blends global tastes with a local Egyptian twist. Every bite is handcrafted with care, bringing together the best from different cultures, all speaking one delicious Egyptian flavor language. Crispy, cheesy, and made to share with the ones you love.</p>
+      </div>
+
+      <div class="footer-section contact">
+        <h3>Contact Us</h3>
+        <p>📍 Cairo, Egypt</p>
+        <p>📞 +20 103 889 9816</p>
+        <p>📧 joia.coxinha26@gmail.com</p>
+      </div>
+
+      <div class="footer-section social">
+        <h3>Follow Us</h3>
+        <div class="social-links">
+          <a href="https://www.facebook.com/share/17gwTQWVk4/" target="_blank" aria-label="Facebook">
+            <img src="images/facebook.png" alt="Facebook">
+          </a>
+          <a href="https://www.instagram.com/joia.kitchen?igsh=MTEyYTR1cHo0cDk0Zg==" target="_blank" aria-label="Instagram">
+            <img src="images/instagram.png" alt="Instagram">
+          </a>
+          <a href="https://wa.me/201038899816" target="_blank" aria-label="Whatsapp">
+            <img src="images/whatsapp.png" alt="Whatsapp">
+          </a>
+          <a href="https://www.tiktok.com/@joiafoods" target="_blank" aria-label="TikTok">
+            <img src="images/tiktok.png" alt="TikTok">
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 Joia Foods. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="popup-msg" class="popup hidden">🛒 Your cart is empty! Add something first 😉</div>
+
+  <script src="joia.js"></script>
+</body>
+</html>
