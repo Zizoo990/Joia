@@ -55,21 +55,21 @@ let cart = [];
 const deliveryPrices = {
 
   "6th of October": 60,
-  "Dokki / Mohandessin": 55,
-  "El Obour": 110,
-  "El Sheikh Zayed": 70,
-  "Giza": 50,
+  "Dokki / Mohandessin": 65,
+  "El Obour": 180,
+  "El Sheikh Zayed": 90,
+  "Giza": 60,
   "Hadayek El Ahram": 40,
   "Hadayek October": 60,
-  "Haram / Feisal": 45,
+  "Haram / Feisal": 50,
   "Imbaba": 60,
-  "Kirdasa": 45,
+  "Kirdasa": 50,
   "Maadi": 80,
-  "Madinaty": 120,
+  "Madinaty": 190,
   "Madinet Nasr": 90,
   "Masr El Gedeeda": 85,
-  "New Cairo": 100,
-  "Zamalek": 70,
+  "New Cairo": 110,
+  "Zamalek": 80,
 
 };
 
