@@ -56,8 +56,8 @@ const deliveryPrices = {
 
   "6th of October": 60,
   "Dokki / Mohandessin": 65,
-  "El Obour": 180,
-  "El Sheikh Zayed": 90,
+  "El Obour": 120,
+  "El Sheikh Zayed": 80,
   "Giza": 60,
   "Hadayek El Ahram": 40,
   "Hadayek October": 60,
@@ -65,10 +65,10 @@ const deliveryPrices = {
   "Imbaba": 60,
   "Kirdasa": 50,
   "Maadi": 80,
-  "Madinaty": 190,
-  "Madinet Nasr": 90,
+  "Madinaty": 130,
+  "Madinet Nasr": 100,
   "Masr El Gedeeda": 85,
-  "New Cairo": 110,
+  "New Cairo": 120,
   "Zamalek": 80,
 
 };
