@@ -29,7 +29,7 @@ const products = [
     name:"Kobeba (Beef Kibbeh)",
     desc:"600gm",
     price:220,
-    img:["images/kobeba2.jpg","images/kobeba1.jpg"]
+    img:["images/Kobeba2.jpg","images/Kobeba1.jpg"]
   },
 
   {
