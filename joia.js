@@ -25,7 +25,7 @@ const products = [
   },
 
   {
-    id:"kob-1",
+    id:"kob-2",
     name:"Kobeba (Beef Kibbeh)",
     desc:"600gm",
     price:220,
