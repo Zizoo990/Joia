@@ -1,107 +1,35 @@
 // Products array
 const products = [
-  {
-    id:"cox-1",
-    name:"Coxinha (Chicken & Cheese)",
-    desc:"600gm",
-    price:130,
-    img:["images/Chicken2.jpg","images/Chicken1.jpg"]
-  },
-
-  {
-    id:"cox-2",
-    name:"Coxinha (Beef & Cheese)",
-    desc:"600gm",
-    price:150,
-    img:["images/Beef2.jpg","images/Beef1.jpg"]
-  },
-
-  {
-    id:"cox-3",
-    name:"Coxinha (Hotdog & Cheese)",
-    desc:"600gm",
-    price:125,
-    img:["images/Hotdog2.jpg","images/Hotdog1.jpg"]
-  },
-
-  {
-    id:"kob-1",
-    name:"Kobeba (Beef Kibbeh)",
-    desc:"600gm",
-    price:220,
-    img:["images/Kobeba2.jpg","images/Kobeba1.jpg"]
-  },
-
-  {
-    id:"Chou-1",
-    name:"Caramel Churros",
-    desc:"600gm",
-    price:140,
-    img:["images/CaramelChouros.png","images/CaramelChouros.png"]
-  },
-
-  {
-    id:"Chou-2",
-    name:"Chocolate Churros",
-    desc:"600gm",
-    price:150,
-    img:["images/ChocolateChouros.png","images/ChocolateChouros.png"]
-  }
+  {id:"cox-1", name:"Coxinha (Chicken & Cheese)", desc:"600gm", price:130, img:["images/Chicken2.jpg","images/Chicken1.jpg"]},
+  {id:"cox-2", name:"Coxinha (Beef & Cheese)", desc:"600gm", price:150, img:["images/Beef2.jpg","images/Beef1.jpg"]},
+  {id:"cox-3", name:"Coxinha (Hotdog & Cheese)", desc:"600gm", price:125, img:["images/Hotdog2.jpg","images/Hotdog1.jpg"]},
+  {id:"kob-1", name:"Kobeba (Beef Kibbeh)", desc:"600gm", price:220, img:["images/Kobeba2.jpg","images/Kobeba1.jpg"]},
+  {id:"Chou-1", name:"Caramel Churros", desc:"600gm", price:140, img:["images/CaramelChouros.png","images/CaramelChouros.png"]},
+  {id:"Chou-2", name:"Chocolate Churros", desc:"600gm", price:150, img:["images/ChocolateChouros.png","images/ChocolateChouros.png"]}
 ];
 
 let cart = [];
 
-// DELIVERY PRICES
-const deliveryPrices = {
-
-  "6th of October": 70,
-  "Abassiya / Ramsees": 80,
-  "Dokki / Mohandessin": 70,
-  "El Obour": 150,
-  "El Sheikh Zayed": 80,
-  "Giza": 70,
-  "Hadayek El Ahram": 30,
-  "Hadayek October": 70,
-  "Haram / Feisal": 60,
-  "Imbaba": 70,
-  "Kirdasa": 60,
-  "Maadi": 80,
-  "Madinaty": 150,
-  "Madinet Nasr": 90,
-  "Masr El Gedeeda": 90,
-  "New Cairo": 120,
-  "Zamalek": 80,
-
-};
-
 // Render products
-const productContainer =
-  document.getElementById("products");
+const productContainer = document.getElementById("products");
 
 products.forEach(p => {
 
-  const div =
-    document.createElement("div");
-
+  const div = document.createElement("div");
   div.className = "product";
 
-  const img =
-    document.createElement("img");
-
+  const img = document.createElement("img");
   img.src = p.img[0];
-
   img.alt = p.name;
 
   let imgIndex = 0;
-
   let intervalId = null;
 
   div.addEventListener("mouseenter", () => {
 
     intervalId = setInterval(() => {
 
-      imgIndex =
-        (imgIndex + 1) % p.img.length;
+      imgIndex = (imgIndex + 1) % p.img.length;
 
       img.src = p.img[imgIndex];
 
@@ -121,14 +49,9 @@ products.forEach(p => {
 
   div.innerHTML = `
     <h3>${p.name}</h3>
-
     <p>${p.desc}</p>
-
     <p>LE${p.price.toFixed(2)}</p>
-
-    <button onclick="addToCart('${p.id}', event)">
-      Add to Cart
-    </button>
+    <button onclick="addToCart('${p.id}', event)">Add to Cart</button>
   `;
 
   div.prepend(img);
@@ -140,11 +63,9 @@ products.forEach(p => {
 // Animate image to cart
 function animateToCart(imgSrc, button) {
 
-  const cartBtn =
-    document.getElementById("cart-btn");
+  const cartBtn = document.getElementById("cart-btn");
 
-  const img =
-    document.createElement("img");
+  const img = document.createElement("img");
 
   img.src = imgSrc;
 
@@ -152,26 +73,16 @@ function animateToCart(imgSrc, button) {
 
   document.body.appendChild(img);
 
-  const rect =
-    button.getBoundingClientRect();
+  const rect = button.getBoundingClientRect();
+  const cartRect = cartBtn.getBoundingClientRect();
 
-  const cartRect =
-    cartBtn.getBoundingClientRect();
+  const startX = rect.left + window.scrollX;
+  const startY = rect.top + window.scrollY;
 
-  const startX =
-    rect.left + window.scrollX;
-
-  const startY =
-    rect.top + window.scrollY;
-
-  const endX =
-    cartRect.left + window.scrollX;
-
-  const endY =
-    cartRect.top + window.scrollY;
+  const endX = cartRect.left + window.scrollX;
+  const endY = cartRect.top + window.scrollY;
 
   img.style.left = startX + "px";
-
   img.style.top = startY + "px";
 
   img.offsetWidth;
@@ -188,9 +99,7 @@ function animateToCart(imgSrc, button) {
     cartBtn.classList.add("cart-bounce");
 
     setTimeout(() => {
-
       cartBtn.classList.remove("cart-bounce");
-
     }, 600);
 
   }, 500);
@@ -200,11 +109,9 @@ function animateToCart(imgSrc, button) {
 // Add to cart
 function addToCart(id, e) {
 
-  const product =
-    products.find(p => p.id === id);
+  const product = products.find(p => p.id === id);
 
-  const existing =
-    cart.find(item => item.id === id);
+  const existing = cart.find(item => item.id === id);
 
   if(existing){
 
@@ -212,10 +119,7 @@ function addToCart(id, e) {
 
   } else {
 
-    cart.push({
-      ...product,
-      quantity:1
-    });
+    cart.push({...product, quantity:1});
 
   }
 
@@ -236,44 +140,32 @@ function addToCart(id, e) {
 // Update cart
 function updateCart() {
 
-  document.getElementById("cart-count")
-    .textContent =
+  document.getElementById("cart-count").textContent =
     cart.reduce((sum,item)=>sum+item.quantity,0);
 
-  const cartItems =
-    document.getElementById("cart-items");
+  const cartItems = document.getElementById("cart-items");
 
   cartItems.innerHTML = "";
 
   cart.forEach((item,i)=>{
 
-    const div =
-      document.createElement("div");
+    const div = document.createElement("div");
 
     div.innerHTML = `
-      <span>
-        ${item.name}
-        -
-        EGP ${(item.price*item.quantity).toFixed(2)}
-      </span>
+      <span>${item.name} - EGP ${(item.price*item.quantity).toFixed(2)}</span>
 
       <div class="qty-controls">
 
         <button class="minus">-</button>
 
-        <input
-          type="text"
-          value="${item.quantity}"
-          readonly
-        >
+        <input type="text" value="${item.quantity}" readonly>
 
         <button class="plus">+</button>
 
       </div>
     `;
 
-    div.querySelector(".minus")
-      .addEventListener("click",()=> {
+    div.querySelector(".minus").addEventListener("click",()=> {
 
       if(item.quantity > 1){
 
@@ -289,8 +181,7 @@ function updateCart() {
 
     });
 
-    div.querySelector(".plus")
-      .addEventListener("click",()=> {
+    div.querySelector(".plus").addEventListener("click",()=> {
 
       item.quantity++;
 
@@ -309,39 +200,18 @@ function updateCart() {
 // Update totals
 function updateCartTotals() {
 
-  let subtotal = 0;
+  let total = 0;
 
   cart.forEach(item => {
 
-    subtotal +=
-      item.price * item.quantity;
+    total += item.price * item.quantity;
 
   });
 
-  const citySelect =
-    document.getElementById("city-select");
+  document.getElementById("subtotal-value").textContent =
+    `EGP ${total.toFixed(2)}`;
 
-  const selectedCity =
-    citySelect
-    ? citySelect.value
-    : "";
-
-  const delivery =
-    deliveryPrices[selectedCity] || 0;
-
-  const total =
-    subtotal + delivery;
-
-  document.getElementById("subtotal-value")
-    .textContent =
-    `EGP ${subtotal.toFixed(2)}`;
-
-  document.getElementById("delivery-value")
-    .textContent =
-    `EGP ${delivery.toFixed(2)}`;
-
-  document.getElementById("total-value")
-    .textContent =
+  document.getElementById("total-value").textContent =
     `EGP ${total.toFixed(2)}`;
 
 }
@@ -349,8 +219,7 @@ function updateCartTotals() {
 // Open cart
 document.getElementById("cart-btn").onclick = () => {
 
-  document.getElementById("cart-drawer")
-    .classList.add("open");
+  document.getElementById("cart-drawer").classList.add("open");
 
   document.body.classList.add("cart-open");
 
@@ -359,16 +228,14 @@ document.getElementById("cart-btn").onclick = () => {
 // Close cart
 document.getElementById("close-cart").onclick = () => {
 
-  document.getElementById("cart-drawer")
-    .classList.remove("open");
+  document.getElementById("cart-drawer").classList.remove("open");
 
   document.body.classList.remove("cart-open");
 
 };
 
 // Popup
-const popup =
-  document.getElementById("popup-msg");
+const popup = document.getElementById("popup-msg");
 
 let emptyCartClicks = 0;
 
@@ -397,38 +264,7 @@ document.getElementById("checkout-btn").onclick = () => {
       popup.classList.remove("show");
 
       setTimeout(()=>{
-
         popup.classList.add("hidden");
-
-      },300);
-
-    },3000);
-
-    return;
-
-  }
-
-  // CHECK IF CITY SELECTED
-  const city =
-    document.getElementById("city-select").value;
-
-  if(city === ""){
-
-    popup.textContent =
-      "Please select your city first 😉";
-
-    popup.classList.remove("hidden");
-
-    popup.classList.add("show");
-
-    setTimeout(()=>{
-
-      popup.classList.remove("show");
-
-      setTimeout(()=>{
-
-        popup.classList.add("hidden");
-
       },300);
 
     },3000);
@@ -439,21 +275,18 @@ document.getElementById("checkout-btn").onclick = () => {
 
   emptyCartClicks = 0;
 
-  document.getElementById("cart-drawer")
-    .classList.remove("open");
+  document.getElementById("cart-drawer").classList.remove("open");
 
   document.body.classList.remove("cart-open");
 
-  document.getElementById("checkout-form")
-    .classList.add("visible");
+  document.getElementById("checkout-form").classList.add("visible");
 
 };
 
 // Cancel order
 document.getElementById("cancel-order").onclick = () => {
 
-  document.getElementById("checkout-form")
-    .classList.remove("visible");
+  document.getElementById("checkout-form").classList.remove("visible");
 
 };
 
@@ -467,21 +300,15 @@ function submitViaImage(url) {
     img.src = url;
 
     img.onload = () => {
-
       resolve(true);
-
     };
 
     img.onerror = () => {
-
       resolve(true);
-
     };
 
     setTimeout(() => {
-
       resolve(true);
-
     }, 1000);
 
   });
@@ -489,104 +316,53 @@ function submitViaImage(url) {
 }
 
 // Submit order
-document.getElementById("order-form")
-  .onsubmit = async (e) => {
+document.getElementById("order-form").onsubmit = async (e) => {
 
   e.preventDefault();
 
   if(cart.length === 0){
-
     alert("Your cart is empty!");
-
     return;
-
   }
 
   const form = e.target;
 
   const name = form.name.value;
-
   const email = form.email.value;
-
   const mobile = form.mobile.value;
-
   const address = form.address.value;
-
   const comment = form.comment.value;
 
-  // CITY FROM CART
-  const city =
-    document.getElementById("city-select").value;
-
-  const subtotal =
-    cart.reduce((sum, item) => {
-
-    return sum +
-      (item.price * item.quantity);
-
+  const total = cart.reduce((sum, item) => {
+    return sum + (item.price * item.quantity);
   }, 0);
 
-  const delivery =
-    deliveryPrices[city] || 0;
-
-  const total =
-    subtotal + delivery;
-
-  const orderList =
-    cart.map(item => {
-
-return `${item.name} x${item.quantity} - EGP ${(item.price * item.quantity).toFixed(2)}`;
-
+  const orderList = cart.map(item => {
+    return `${item.name} x${item.quantity} - EGP ${(item.price * item.quantity).toFixed(2)}`;
   }).join("\n");
 
-const orderDetails =
-`Order: 
+  const orderDetails = `
+Order:
 ${orderList}
 
-City: ${city}
-Delivery: EGP ${delivery.toFixed(2)}
-Total: EGP ${total.toFixed(2)}`;
+Total: EGP ${total.toFixed(2)}
+`;
 
   try {
 
-    const params =
-      new URLSearchParams();
+    const params = new URLSearchParams();
 
-    params.append(
-      'entry.859105192',
-      name
-    );
-
-    params.append(
-      'entry.1111035466',
-      email
-    );
-
-    params.append(
-      'entry.886482439',
-      mobile
-    );
-
-    params.append(
-      'entry.452281284',
-      address
-    );
-
-    params.append(
-      'entry.797216172',
-      orderDetails
-    );
-
-    params.append(
-      'entry.170065002',
-      comment
-    );
+    params.append('entry.859105192', name);
+    params.append('entry.1111035466', email);
+    params.append('entry.886482439', mobile);
+    params.append('entry.452281284', address);
+    params.append('entry.797216172', orderDetails);
+    params.append('entry.170065002', comment);
 
     const submissionUrl =
 `https://docs.google.com/forms/d/e/1FAIpQLScMzF-f3qsBvSq-qNvrI73WFqiCg4JmRo-m7zR2Dn7feG_IVw/formResponse?${params.toString()}`;
 
-    const success =
-      await submitViaImage(submissionUrl);
+    const success = await submitViaImage(submissionUrl);
 
     if(success){
 
@@ -608,11 +384,6 @@ Total: EGP ${total.toFixed(2)}`;
       }, 2500);
 
       form.reset();
-
-      document.getElementById("city-select")
-        .value = "";
-
-      updateCartTotals();
 
     } else {
 
@@ -639,8 +410,7 @@ document.getElementById("close-confirm").onclick = ()=>{
 };
 
 // Header fade
-const headerBg =
-  document.querySelector(".header-bg img");
+const headerBg = document.querySelector(".header-bg img");
 
 window.addEventListener("scroll",()=>{
 
@@ -649,44 +419,19 @@ window.addEventListener("scroll",()=>{
 
 });
 
-// UPDATE DELIVERY WHEN CITY CHANGES
-document.addEventListener("change", (e) => {
-
-  if(e.target.id === "city-select"){
-
-    updateCartTotals();
-
-  }
-
-});
-
 // ===== HELP SECTION =====
 
-const helpBtn =
-  document.getElementById("help-btn");
+const helpBtn = document.getElementById("help-btn");
+const helpBox = document.getElementById("help-box");
+const helpFormDiv = document.getElementById("help-form");
+const backBtn = document.getElementById("back-btn");
+const formContent = document.getElementById("form-content");
+const helpFormEl = document.getElementById("helpForm");
 
-const helpBox =
-  document.getElementById("help-box");
-
-const helpFormDiv =
-  document.getElementById("help-form");
-
-const backBtn =
-  document.getElementById("back-btn");
-
-const formContent =
-  document.getElementById("form-content");
-
-const helpFormEl =
-  document.getElementById("helpForm");
-
-const helpMessage =
-  document.createElement("p");
+const helpMessage = document.createElement("p");
 
 helpMessage.id = "help-message";
-
 helpMessage.style.marginTop = "8px";
-
 helpMessage.style.fontWeight = "600";
 
 helpFormEl.appendChild(helpMessage);
@@ -701,16 +446,12 @@ helpBtn.addEventListener("click", () => {
   helpMessage.textContent = "";
 
   const sendBtn =
-    helpFormEl.querySelector(
-      "button[type='submit']"
-    );
+    helpFormEl.querySelector("button[type='submit']");
 
   if(sendBtn){
 
     sendBtn.style.display = "";
-
     sendBtn.disabled = false;
-
     sendBtn.textContent = "Send";
 
   }
@@ -718,13 +459,11 @@ helpBtn.addEventListener("click", () => {
 });
 
 // Help options
-document.querySelectorAll(".help-option")
-  .forEach(btn => {
+document.querySelectorAll(".help-option").forEach(btn => {
 
   btn.addEventListener("click", () => {
 
-    const type =
-      btn.getAttribute("data-type");
+    const type = btn.getAttribute("data-type");
 
     helpBox.classList.add("hidden");
 
@@ -735,28 +474,20 @@ document.querySelectorAll(".help-option")
 
       formContent.innerHTML = `
         <label>
-
           Order Number:
-
           <input
             type="text"
             name="orderNumber"
             placeholder="Enter your order number"
-            required
-          >
-
+            required>
         </label>
 
         <label>
-
           Reason:
-
           <textarea
             name="reason"
             placeholder="Why are you cancelling?"
-            required
-          ></textarea>
-
+            required></textarea>
         </label>
       `;
 
@@ -767,39 +498,21 @@ document.querySelectorAll(".help-option")
 
       formContent.innerHTML = `
         <label>
-
           Your Name:
-
-          <input
-            type="text"
-            name="name"
-            required
-          >
-
+          <input type="text" name="name" required>
         </label>
 
         <label>
-
           Mobile:
-
-          <input
-            type="text"
-            name="mobile"
-            required
-          >
-
+          <input type="text" name="mobile" required>
         </label>
 
         <label>
-
           Message:
-
           <textarea
             name="message"
             placeholder="Write your message..."
-            required
-          ></textarea>
-
+            required></textarea>
         </label>
       `;
 
@@ -810,38 +523,27 @@ document.querySelectorAll(".help-option")
 
       formContent.innerHTML = `
         <label>
-
           Your Feedback:
-
           <textarea
             name="feedback"
             placeholder="Share your thoughts..."
-            required
-          ></textarea>
-
+            required></textarea>
         </label>
       `;
 
     }
 
     const prevType =
-      helpFormEl.querySelector(
-        "input[name='type']"
-      );
+      helpFormEl.querySelector("input[name='type']");
 
     if(prevType){
-
       prevType.remove();
-
     }
 
-    const typeInput =
-      document.createElement("input");
+    const typeInput = document.createElement("input");
 
     typeInput.type = "hidden";
-
     typeInput.name = "type";
-
     typeInput.value = type;
 
     helpFormEl.appendChild(typeInput);
@@ -864,22 +566,17 @@ backBtn.addEventListener("click",()=>{
 });
 
 // Help form submit
-helpFormEl.addEventListener(
-  "submit",
-  async (e) => {
+helpFormEl.addEventListener("submit", async (e) => {
 
   e.preventDefault();
 
-  const formData =
-    new FormData(helpFormEl);
+  const formData = new FormData(helpFormEl);
 
-  const type =
-    formData.get("type");
+  const type = formData.get("type");
 
   let submissionUrl = "";
 
-  const params =
-    new URLSearchParams();
+  const params = new URLSearchParams();
 
   try {
 
