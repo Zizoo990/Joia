@@ -707,3 +707,39 @@ body.cart-open {
   flex-direction: column;
   overflow-y: auto; /* Enable scrolling only for cart */
 }
+
+/* CITY SELECT */
+
+#city-select {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  background: #fff;
+}
+
+
+
+/* CITY SELECT INSIDE CART */
+
+.city-select-box {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.city-select-box label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+#city-select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  background: #fff;
+}
