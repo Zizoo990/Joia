@@ -5,7 +5,7 @@ const products = [
     name:"Coxinha (Chicken & Cheese)",
     desc:"600gm",
     price:130,
-    img:["images/Chicken2.jpg","images/Chicken1.jpg"]
+    img:["images/Chicken3ai.png","images/Chicken4ai.jpg"]
   },
 
   {
@@ -13,7 +13,7 @@ const products = [
     name:"Coxinha (Beef & Cheese)",
     desc:"600gm",
     price:150,
-    img:["images/Beef2.jpg","images/Beef1.jpg"]
+    img:["images/Beef3ai.jpg","images/Beef4ai.jpg"]
   },
 
   {
@@ -21,7 +21,7 @@ const products = [
     name:"Coxinha (Hotdog & Cheese)",
     desc:"600gm",
     price:125,
-    img:["images/Hotdog2.jpg","images/Hotdog1.jpg"]
+    img:["images/Hotdog3ai.png","images/Hotdog4ai.jpg"]
   },
 
   {
@@ -29,7 +29,7 @@ const products = [
     name:"Kobeba (Beef Kibbeh)",
     desc:"600gm",
     price:220,
-    img:["images/Kobeba2.jpg","images/Kobeba1.jpg"]
+    img:["images/Kobeba3ai.png","images/Kobeba4ai.jpg"]
   },
 
   {
@@ -37,7 +37,7 @@ const products = [
     name:"Caramel Churros",
     desc:"600gm",
     price:140,
-    img:["images/CaramelChouros.png","images/CaramelChouros.png"]
+    img:["images/Caramel3ai.jpg","images/Caramel4ai.jpg"]
   },
 
   {
@@ -45,7 +45,7 @@ const products = [
     name:"Chocolate Churros",
     desc:"600gm",
     price:150,
-    img:["images/ChocolateChouros.png","images/ChocolateChouros.png"]
+    img:["images/Chocolate3ai.jpg","images/Chocolate4ai.jpg"]
   }
 ];
 
