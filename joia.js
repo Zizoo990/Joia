@@ -65,7 +65,7 @@ const deliveryPrices = {
   "El Manyal": 70,
   "El Maryouteya": 70,
   "El Moqatam": 90,
-  "El Obour": 150,
+  "El Obour": 130,
   "El Sheikh Zayed": 80,
   "El Rehab": 130,
   "El Salam": 130,
